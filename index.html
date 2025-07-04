@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>トリプルチャンス 🎴</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>トリプルチャンス 🎴</h1>
+
+  <!-- 🔹 ロビー画面 -->
+  <div id="lobby">
+    <input id="playerName" placeholder="プレイヤー名" />
+
+    <h2>ルームを作成</h2>
+    <input id="createRoomId" placeholder="ルームID" />
+    <select id="maxPlayers">
+      <option value="2">2人</option>
+      <option value="3">3人</option>
+      <option value="4">4人</option>
+    </select>
+    <button id="createBtn">ルームを作成</button>
+
+    <h2>ルームに参加</h2>
+    <button id="joinBtn">ルームに参加</button>
+    <p id="errorMsg" style="color: red;"></p>
+
+    <h2>公開ルーム一覧</h2>
+    <div id="roomList"></div>
+  </div>
+
+  <!-- 🔹 ルーム待機画面 -->
+  <div id="waitingRoom" style="display: none;">
+    <h2>ルーム待機中</h2>
+    <p id="roomInfo"></p>
+    <p id="playersList"></p>
+    <div id="startArea" style="display: none;">
+      <button id="startGameBtn">🎲 ゲーム開始</button>
+    </div>
+    <button id="cancelBtn">キャンセル</button>
+  </div>
+
+  <!-- 🔹 ゲーム画面 -->
+  <div id="gameArea" style="display: none;">
+    <h2 id="turnInfo">ターン中のプレイヤー:</h2>
+
+    <div id="diceArea">
+      <button id="rollBtn">🎲 サイコロを振る</button>
+      <div id="diceResult" style="font-size: 32px; margin-top: 10px;">🎲 ?</div>
+    </div>
+
+    <div id="handArea">
+      <h3>あなたの手札</h3>
+      <div id="yourCards" class="card-container"></div>
+    </div>
+
+    <div id="handCountsArea" style="margin-top: 10px;">
+      <h4>全員の手札枚数</h4>
+      <ul id="handCountsList"></ul>
+    </div>
+
+    <div id="defenseArea" style="display:none;">
+      <p id="defenseMessage"></p>
+      <div id="defenseOptions"></div>
+      <button id="noDefenseBtn">防御しない</button>
+    </div>
+
+    <div id="gameLog" style="margin-top: 20px; font-size: 18px;"></div>
+
+    <div id="endGameControls" style="display: none; margin-top: 20px;">
+      <button id="restartBtn">🔁 リスタート</button>
+      <button id="exitBtn">❌ ゲームを終わる</button>
+    </div>
+
+    <!-- 📜 ゲームルール -->
+    <div id="rules" style="margin-top: 30px; text-align: left; max-width: 600px; margin-inline: auto; background: #fff8dc; border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+      <h3>📜 ゲームルール</h3>
+      <ul>
+        <li>ゲーム開始時に手札3枚を配られます。</li>
+        <li>自分のターンにサイコロを振ります。</li>
+        <li>奇数 → 山札からその数分カードを引く</li>
+        <li>偶数 → 他のプレイヤーからランダムにその数分カードを奪う</li>
+        <li>奪われそうな時、同じ数字2枚を出すと防御できます（カードは消費）</li>
+        <li>同じ数字のカード3枚を揃えたら勝利（「スリー！」）</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

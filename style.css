@@ -1,0 +1,125 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+  background-color: #f4f4f4;
+  padding: 20px;
+  margin: 0;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+input, select, button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background-color: #4CAF50;
+  color: white;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#roomList .room-entry {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 8px auto;
+  width: 80%;
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.card {
+  width: 60px;
+  height: 90px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* 🎲 サイコロ回転アニメーション */
+@keyframes diceRoll {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(90deg); }
+  50%  { transform: rotate(180deg); }
+  75%  { transform: rotate(270deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.dice-rolling {
+  animation: diceRoll 0.4s linear infinite;
+}
+
+/* 🛡 防御セクション */
+#defenseArea {
+  margin-top: 20px;
+  background-color: #fffbe7;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+#defenseOptions button {
+  margin: 5px;
+  padding: 8px;
+  font-size: 16px;
+}
+
+#handCountsArea ul {
+  list-style: none;
+  padding: 0;
+}
+
+#handCountsArea li {
+  margin: 4px;
+  font-weight: bold;
+}
+
+/* 📱 レスポンシブ対応 */
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  input, select, button {
+    width: 90%;
+    max-width: 300px;
+    font-size: 16px;
+  }
+
+  .card {
+    width: 50px;
+    height: 70px;
+    font-size: 20px;
+  }
+
+  #rules {
+    font-size: 14px;
+  }
+}
